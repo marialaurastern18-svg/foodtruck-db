@@ -21,13 +21,6 @@ CONSTRAINT FK_orders_foodtruck
 FOREIGN KEY (foodtruck_id)
 REFERENCES foodtrucks(foodtruck_id)); 
 
-
-ALTER TABLE orders
-ADD COLUMN COMMENTS VARCHAR (255);
-SELECT * FROM orders;
-SELECT column_name
-FROM information_schema.COLUMNS
-WHERE table_name = 'orders';
 CREATE TABLE order_items (order_item_id INT PRIMARY KEY, order_id INT NOT NULL,
 product_id INT NOT NULL, quantity INT NOT NULL,
 
@@ -38,7 +31,6 @@ REFERENCES orders (order_id),
 CONSTRAINT FK_order_items_products
 FOREIGN KEY (product_id)
 REFERENCES products (product_id));
-
 
 CREATE TABLE locations( location_id INT PRIMARY KEY, foodtruck_id INT NOT NULL, 
 location_date DATE NOT NULL, zone VARCHAR(100) NOT NULL,
@@ -86,4 +78,7 @@ VALUES
 SELECT * FROM locations;
 
 
+--MODIFICACION DEL ESQUEMA
+ALTER TABLE orders
+ADD COLUMN COMMENTS VARCHAR (255);
 
